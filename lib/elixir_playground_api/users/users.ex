@@ -1,5 +1,5 @@
-defmodule ElixirPlaygroundApi.Accounts do
-  alias ElixirPlaygroundApi.Accounts.User
+defmodule ElixirPlaygroundApi.Users do
+  alias ElixirPlaygroundApi.Users.User
   alias ElixirPlaygroundApi.Repo
 
   def create_user(user) do

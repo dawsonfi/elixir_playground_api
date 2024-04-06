@@ -1,16 +1,16 @@
-defmodule ElixirPlaygroundApiWeb.AccountsControllerTest do
+defmodule ElixirPlaygroundApiWeb.UsersControllerTest do
   use ElixirPlaygroundApiWeb.ConnCase
-  alias ElixirPlaygroundApi.Accounts
-  alias ElixirPlaygroundApi.Accounts.User
+  alias ElixirPlaygroundApi.Users
+  alias ElixirPlaygroundApi.Users.User
 
   setup do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(ElixirPlaygroundApi.Repo)
-    {:ok, user} = Accounts.create_user(%User{name: "dawson", type: "BUYER", avatar_url: "https://localhost/avatare"})
+    {:ok, user} = Users.create_user(%User{name: "dawson", type: "BUYER", avatar_url: "https://localhost/avatare"})
     {:ok, user: user}
   end
 
-  test "GET /accounts", %{conn: conn, user: user} do
-    conn = get(conn, ~p"/accounts")
+  test "GET /users", %{conn: conn, user: user} do
+    conn = get(conn, ~p"/users")
 
     assert json_response(conn, 200) == [%{
       "avatar_url" => user.avatar_url,

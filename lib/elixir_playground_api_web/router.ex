@@ -17,7 +17,7 @@ defmodule ElixirPlaygroundApiWeb.Router do
   scope "/", ElixirPlaygroundApiWeb do
     pipe_through :api
 
-    get "/accounts", AccountsController, :list_accounts
+    get "/users", UsersController, :list_users
   end
 
   # Other scopes may use custom stacks.

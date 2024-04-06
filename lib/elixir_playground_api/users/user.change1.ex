@@ -1,4 +1,4 @@
-defmodule ElixirPlaygroundApi.Accounts.User do
+defmodule ElixirPlaygroundApi.Users.User do
   use Ecto.Schema
 
   @derive {Jason.Encoder, except: [:__meta__]}
