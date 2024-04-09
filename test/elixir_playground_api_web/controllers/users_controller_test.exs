@@ -9,16 +9,18 @@ defmodule ElixirPlaygroundApiWeb.UsersControllerTest do
     {:ok, user: user}
   end
 
-  test "GET /users", %{conn: conn, user: user} do
-    conn = get(conn, ~p"/users")
+  describe "GET /users" do
+    test "should return all users from database", %{conn: conn, user: user} do
+      conn = get(conn, ~p"/users")
 
-    assert json_response(conn, 200) == [%{
-      "avatar_url" => user.avatar_url,
-      "id" => user.id,
-      "inserted_at" => NaiveDateTime.to_iso8601(user.inserted_at),
-      "name" => user.name,
-      "type" => user.type,
-      "updated_at" => NaiveDateTime.to_iso8601(user.updated_at),
-    }]
+      assert json_response(conn, 200) == [%{
+               "avatar_url" => user.avatar_url,
+               "id" => user.id,
+               "inserted_at" => NaiveDateTime.to_iso8601(user.inserted_at),
+               "name" => user.name,
+               "type" => user.type,
+               "updated_at" => NaiveDateTime.to_iso8601(user.updated_at),
+             }]
+    end
   end
 end
