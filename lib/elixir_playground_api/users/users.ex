@@ -1,4 +1,7 @@
 defmodule ElixirPlaygroundApi.Users do
+  @moduledoc """
+  Users operations module
+  """
   alias ElixirPlaygroundApi.Users.User
   alias ElixirPlaygroundApi.Repo
 

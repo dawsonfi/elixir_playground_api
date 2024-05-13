@@ -58,7 +58,9 @@ defmodule ElixirPlaygroundApi.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:phx_gen_solid, "~> 0.3", only: [:dev], runtime: false}
+      {:phx_gen_solid, "~> 0.3", only: [:dev], runtime: false},
+      {:parallel_stream, "~> 1.1.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -80,7 +82,8 @@ defmodule ElixirPlaygroundApi.MixProject do
         "tailwind elixir_playground_api --minify",
         "esbuild elixir_playground_api --minify",
         "phx.digest"
-      ]
+      ],
+      check: ["format", "credo"]
     ]
   end
 end

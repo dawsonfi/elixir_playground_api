@@ -1,15 +1,20 @@
 defmodule ElixirPlaygroundApi.Users.UsersTest do
-  use ExUnit.Case
+  use ElixirPlaygroundApi.DataCase
   alias ElixirPlaygroundApi.Users
-  alias ElixirPlaygroundApi.Users.User
 
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ElixirPlaygroundApi.Repo)
+  @valid_user %{name: "dawson", type: "BUYER", avatar_url: "https://localhost/avatare"}
+
+  def fixture(:user) do
+    {:ok, user} =
+      @valid_user
+      |> Users.create_user()
+
+    user
   end
 
   describe "create_user" do
     test "should succeed in creating user" do
-      {:ok, user} = Users.create_user(%User{name: "dawson", type: "BUYER", avatar_url: "https://localhost/avatare"})
+      user = fixture(:user)
 
       assert "dawson" == user.name
       assert "BUYER" == user.type
@@ -18,10 +23,10 @@ defmodule ElixirPlaygroundApi.Users.UsersTest do
   end
 
   describe "list_users" do
-    test "list_users should return users"do
-      {:ok, user} = Users.create_user(%User{name: "dawson", type: "BUYER", avatar_url: "https://localhost/avatare"})
+    test "list_users should return users" do
+      user = fixture(:user)
+
       assert Users.list_users() == [user]
     end
   end
-
 end

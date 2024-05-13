@@ -10,7 +10,8 @@ defmodule ElixirPlaygroundApi.Application do
     children = [
       ElixirPlaygroundApiWeb.Telemetry,
       ElixirPlaygroundApi.Repo,
-      {DNSCluster, query: Application.get_env(:elixir_playground_api, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:elixir_playground_api, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ElixirPlaygroundApi.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: ElixirPlaygroundApi.Finch},
