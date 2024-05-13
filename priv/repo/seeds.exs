@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+########################################
+# Users
+########################################
+Code.require_file("seeds/users.exs", __DIR__)
+ElixirPlaygroundApi.Seed.UsersSeed.seed_users()
